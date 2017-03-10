@@ -31,9 +31,15 @@ Defining a route is done with the standard ASP.Net MVC routing practices. In Umb
     protected override void ApplicationStarted(UmbracoApplicationBase umbracoApplication, ApplicationContext    
     applicationContext)
     {
+    //get the path to the umbraco backoffice folder mvcarea
+    var umbracoPath = System.Configuration.ConfigurationManager.AppSettings["umbracoPath"];
+            if (umbracoPath.StartsWith(SystemDirectories.Root)) 
+                umbracoPath = umbracoPath.Substring(SystemDirectories.Root.Length);
+            umbracoPath = umbracoPath.TrimStart('~').TrimStart('/').Replace('/', '-').Trim().ToLower();
+      
       RouteTable.Routes.MapRoute(
       name: "cats",
-      url: GlobalSettings.UmbracoMvcArea + "/backoffice/cats/{action}/{id}",
+      url: umbracoPath + "/backoffice/cats/{action}/{id}",
       defaults: new
       {
         controller = "Cats",
