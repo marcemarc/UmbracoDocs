@@ -1,8 +1,8 @@
 #System Requirements
 
 ##Browsers
-The Umbraco UI should work in all modern browsers:
 
+The Umbraco UI should work in all modern browsers:
 * Firefox (Latest)
 * Chrome (Latest)
 * IE10+ (will not always work correctly in lower versions)
